@@ -1,0 +1,13 @@
+#dependencies
+node_modules
+
+# output
+stats.json
+
+# log files
+yarn-error.log
+npm-debug.log
+
+# omitted files (tmp)
+_try_/
+docs/

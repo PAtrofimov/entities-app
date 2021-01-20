@@ -4,13 +4,7 @@ import { connect } from 'react-redux';
 import { addEntity, changeEntity, deleteEntity, getEntities } from '../redux/entity/entityActions';
 import { Col, Container, Jumbotron, Row, Spinner } from 'react-bootstrap';
 import Entities from '../components/Entities';
-
-const entityRaces = {
-    Hobbit: 'Hobbit',
-    Human: 'Human',
-    Dworf: 'Dworf',
-    Elf: 'Elf'
-};
+import { entityRaces } from '../utils';
 
 function EntitiesContainer({ entityData, addEntity, changeEntity, deleteEntity, getEntities }) {
     const handleAddEntity = data => {
@@ -40,7 +34,7 @@ function EntitiesContainer({ entityData, addEntity, changeEntity, deleteEntity, 
                     ) : (
                         <>
                             {Object.values(entityRaces).map(race => (
-                                <Col key={race} xs={12} sm={6} md={3}>
+                                <Col key={race} xs={12} sm={6} md={4} lg={3}>
                                     <Entities
                                         race={race}
                                         data={entityData.data}

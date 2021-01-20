@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Card, Button, ButtonGroup, Badge, Form, Col } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Card, Button, ButtonGroup, Badge, Form, Col, Image } from 'react-bootstrap';
 import AddEntity from './AddEntity';
 import DeleteEntity from './DeleteEntity';
 import UpdateEntity from './UpdateEntity';
+import { run as runHolder } from 'holderjs/holder';
+import { entityColors } from '../utils';
 
 const EntitiesHeaders = ({ race, show, onHide, onShow, onAdd }) => {
     const result = (
@@ -35,6 +37,10 @@ const Entities = ({ data, race, onAddEntity, onChangeEntity, onDeleteEntity }) =
     const [modalEditShow, setModalEditShow] = useState(false);
     const [modalDeleteShow, setModalDeleteShow] = useState(false);
 
+    useEffect(() => {
+        runHolder('image-class-name-no-initial-dot');
+    });
+
     const handleClose = fn => () => {
         fn(false);
     };
@@ -57,20 +63,18 @@ const Entities = ({ data, race, onAddEntity, onChangeEntity, onDeleteEntity }) =
                 .map(el => (
                     <Card key={el.id} className="text-center">
                         <Card.Body>
-                            <Card.Title>{el.name}</Card.Title>
-                            <ButtonGroup vertical className="justify-content-center">
-                                <Button
-                                    variant="primary"
-                                    style={{ width: '100%' }}
-                                    onClick={handleShow(setModalEditShow)}
-                                >
-                                    Изменить имя
+                            <Image
+                                src={`holder.js/50px50px?text= &bg=${entityColors[race]}`}
+                                roundedCircle
+                                style={{ margin: 'auto' }}
+                            />
+                            <Card.Title className="mt-3">{el.name}</Card.Title>
+
+                            <ButtonGroup className="justify-content-center" style={{ width: '100%' }}>
+                                <Button variant="primary" onClick={handleShow(setModalEditShow)}>
+                                    Изменить
                                 </Button>
-                                <Button
-                                    variant="warning"
-                                    style={{ width: '100%' }}
-                                    onClick={handleShow(setModalDeleteShow)}
-                                >
+                                <Button variant="warning" onClick={handleShow(setModalDeleteShow)}>
                                     Удалить
                                 </Button>
                             </ButtonGroup>

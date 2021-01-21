@@ -27,7 +27,7 @@ const AddEntity = ({ race, onHide, show, onAdd }) => {
                 <Form>
                     <Form.Group controlId="formGroupName">
                         <Form.Label>Имя</Form.Label>
-                        <Form.Control type="text" placeholder="Name" onChange={handleChange} />
+                        <Form.Control type="text" placeholder="Имя" onChange={handleChange} />
                     </Form.Group>
                 </Form>
             </Modal.Body>

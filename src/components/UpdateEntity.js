@@ -26,7 +26,7 @@ const UpdateEntity = ({ id, name, show, onHide, onUpdate }) => {
                 <Form>
                     <Form.Group controlId="formGroupName">
                         <Form.Label>Имя</Form.Label>
-                        <Form.Control type="text" placeholder="Name" value={value} onChange={handleChange} />
+                        <Form.Control type="text" placeholder="Имя" value={value} onChange={handleChange} />
                     </Form.Group>
                 </Form>
             </Modal.Body>

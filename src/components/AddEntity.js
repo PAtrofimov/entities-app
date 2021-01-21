@@ -2,17 +2,22 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import React, { useState } from 'react';
 
 const AddEntity = ({ race, onHide, show, onAdd }) => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
 
     const handleChange = e => {
         setValue(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault();
-        onAdd({race, name: value});
+
+        if (!value.trim()) {
+            return;
+        }
+
+        onAdd({ race, name: value });
         onHide();
-    }
+    };
     return (
         <Modal onHide={onHide} show={show} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
             <Modal.Header closeButton>
@@ -27,8 +32,8 @@ const AddEntity = ({ race, onHide, show, onAdd }) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                 <Button onClick={handleSubmit}>Добавить</Button>
-                 <Button onClick={onHide}>Закрыть</Button>
+                <Button onClick={handleSubmit}>Добавить</Button>
+                <Button onClick={onHide}>Закрыть</Button>
             </Modal.Footer>
         </Modal>
     );

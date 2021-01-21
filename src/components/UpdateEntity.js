@@ -9,6 +9,9 @@ const UpdateEntity = ({ id, name, show, onHide, onUpdate }) => {
     };
 
     const handleSubmit = e => {
+        if (!value.trim()) {
+            return;
+        }
         e.preventDefault();
         onUpdate({id, name: value});
         onHide();
